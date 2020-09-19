@@ -21,6 +21,7 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'lepture/vim-jinja'
 Plug 'pangloss/vim-javascript'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 filetype plugin indent on
@@ -55,6 +56,8 @@ set softtabstop=4
 set colorcolumn=80
 set expandtab
 set viminfo='25,\"50,n~/.viminfo
+set list
+set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 
 " word movement
 imap <S-Left> <Esc>bi
@@ -204,3 +207,7 @@ set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 nmap <silent> <buffer> gK <Plug>(kite-docs)
 let g:kite_documentation_continual=1
 " End of kite configuration
+
+" Configuration for vim-go to use gopls
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
