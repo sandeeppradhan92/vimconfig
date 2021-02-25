@@ -21,6 +21,7 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'lepture/vim-jinja'
 Plug 'pangloss/vim-javascript'
+Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
@@ -192,22 +193,29 @@ endfunction
 
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
-" Configuration fo ekite server for auto completion of python an go
-" For this to work we hae to install kite server in the system
-let g:kite_supported_languages = ['python', 'go']
+" Configuration for kite server for auto completion of python an go
+" ==================================================================
+" For this to work we have to install kite server in the system
+"let g:kite_supported_languages = ['python', 'go']
 "let g:kite_tab_complete=1
-set completeopt+=menuone   " show the popup menu even when there is only 1 match
-set completeopt+=noinsert  " don't insert any text until user chooses a match
-set completeopt-=longest   " don't insert the longest common text
-set completeopt+=preview
-autocmd CompleteDone * if !pumvisible() | pclose | endif
-set belloff+=ctrlg  " if vim beeps during completion
+"set completeopt+=menuone   " show the popup menu even when there is only 1 match
+"set completeopt+=noinsert  " don't insert any text until user chooses a match
+"set completeopt-=longest   " don't insert the longest common text
+"set completeopt+=preview
+"autocmd CompleteDone * if !pumvisible() | pclose | endif
+"set belloff+=ctrlg  " if vim beeps during completion
 
-set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
-nmap <silent> <buffer> gK <Plug>(kite-docs)
-let g:kite_documentation_continual=1
+"set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+"nmap <silent> <buffer> gK <Plug>(kite-docs)
+"let g:kite_documentation_continual=1
 " End of kite configuration
 
 " Configuration for vim-go to use gopls
+" ==================================================================
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+
+" Configure vim for Rust.  https://github.com/rust-lang/rust.vim
+" ==================================================================
+" Enable auto formatting
+let g:rustfmt_autosave = 1
